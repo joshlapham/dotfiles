@@ -1,19 +1,17 @@
 # Sample instacli.py
 #
-# This is a sample instacli.py file. Usually we keep a lot of sensitive information
-# here (things like authentication tokens, email addresses, and so on), so this
+# This is a sample instacli.py file. Usually sensitive information
+# lives here (things like authentication tokens, email addresses, and so on), so this
 # file is ignored in this project's .gitignore.
 #
-# To set this up, rename this file to `instacli.py` and you'll be able to
-# install this to the correct location by running the project's main `rake`
-# task.
+# To set this up, rename this file to `instacli.py` and the 'insta'
+# alias will function correctly. Also change the variables to match your
+# Instapaper credentials.
 
 ###
 #
 # InstaCLI
 # Quick and dirty Instapaper CLI client written in Python.
-#
-# By Josh Lapham [josh@joshlapham.com]
 #
 ###
 

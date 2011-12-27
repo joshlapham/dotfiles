@@ -4,8 +4,6 @@
 #
 # Simple rsync backup script for Mac.
 #
-# By Josh Lapham [josh@joshlapham.com]
-#
 ###
 
 # VARIABLES

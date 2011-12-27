@@ -2,9 +2,10 @@
 
 ###
 #
-# Simple script to git clone the preferred vim plugins.
+# Simple script to git clone my preferred vim plugins.
 #
-# By Josh Lapham [josh@joshlapham.com]
+# The plugin install path is ignored by .gitignore to save space,
+# so this script needs to be run for the plugins to be installed.
 #
 # Plugins are:
 #

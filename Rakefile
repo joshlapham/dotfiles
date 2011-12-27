@@ -1,3 +1,6 @@
+# 'Borrowed' from Zach Holman
+# https://github.com/holman/dotfiles/blob/master/Rakefile
+
 require 'rake'
 
 desc "Hook our dotfiles into system-standard positions."
