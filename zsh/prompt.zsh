@@ -1,4 +1,5 @@
-export LSCOLORS="exfxcxdxbxegedabagacad"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+#export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
 autoload -U colors && colors
