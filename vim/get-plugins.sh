@@ -1,5 +1,25 @@
 #!/bin/bash
 
+###
+#
+# Simple script to git clone the preferred vim plugins.
+#
+# By Josh Lapham [josh@joshlapham.com]
+#
+# Plugins are:
+#
+# * Command-T
+# * fugitive
+# * Gundo
+# * Nerdtree
+# * snipMate
+# * supertab
+# * taglist
+# * VOoM
+# * vim-colors-solarized
+#
+###
+
 git clone git://github.com/vim-scripts/Command-T.git vim.symlink/bundle/Command-T
 git clone git://github.com/tpope/vim-fugitive.git vim.symlink/bundle/fugitive
 git clone git://github.com/vim-scripts/Gundo.git vim.symlink/bundle/Gundo
@@ -10,4 +30,4 @@ git clone git://github.com/vim-scripts/taglist.vim.git vim.symlink/bundle/taglis
 git clone git://github.com/vim-scripts/VOoM.git vim.symlink/bundle/voom
 git clone git://github.com/altercation/vim-colors-solarized.git vim.symlink/bundle/vim-colors-solarized
 
-echo "enddddddd.\n"
+echo "Plugin clone complete."
