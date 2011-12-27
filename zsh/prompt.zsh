@@ -1,7 +1,5 @@
-# Copied and modified from the oh-my-zsh theme from geoffgarside
-# Red server name, green cwd, blue git status
+export LSCOLORS="exfxcxdxbxegedabagacad"
+export CLICOLOR=true
 
-PROMPT='%{$fg[red]%}%m%{$reset_color%}:%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
-
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[blue]%}("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
+autoload -U colors && colors
+PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
