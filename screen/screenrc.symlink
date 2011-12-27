@@ -1,5 +1,3 @@
-screen -t bash
-
 startup_message off
 altscreen on
 term screen-256color
