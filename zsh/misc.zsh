@@ -9,7 +9,7 @@ alias -- -='cd -'
 
 # List direcory contents
 alias lsa='ls -lah'
-alias l='ls -la'
+alias l='ls -lahG'
 alias ll='ls -l'
 
 # Safety with rm
