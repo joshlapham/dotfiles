@@ -1,0 +1,25 @@
+"*":
+  core:
+    disabledPackages: [
+      "metrics"
+      "linter-pep8"
+    ]
+    themes: [
+      "one-dark-ui"
+      "dusk-syntax"
+    ]
+  editor:
+    fontSize: 15
+    invisibles: {}
+  "exception-reporting":
+    userId: "5b1bc328-e440-c930-d16b-755355472ec9"
+  welcome:
+    showOnStartup: false
+  whitespace: {}
+".python.source":
+  editor:
+    softtabs: true
+    tabLength: 4
+  whitespace:
+    ensureSingleTrailingNewline: false
+    removeTrailingWhitespace: false
