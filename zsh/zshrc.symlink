@@ -3,3 +3,6 @@ ZSH=$HOME/.dotfiles
 
 # Source every .zsh file
 for config_file ($ZSH/**/*.zsh) source $config_file
+
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
