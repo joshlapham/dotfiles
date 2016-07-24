@@ -1,8 +1,45 @@
+# Local
 git/gitconfig.symlink
 bin/instacli.py
 bin/nzbcli.py
 vim/vim.symlink/bundle/*
 local
-.DS_Store
 .tmp
 .swp
+
+# Atom
+atom.symlink/.apm
+atom.symlink/.node-gyp
+atom.symlink/blob-store
+atom.symlink/compile-cache
+atom.symlink/packages
+atom.symlink/storage
+
+# Created by https://www.gitignore.io/api/osx
+
+### OSX ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
