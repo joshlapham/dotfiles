@@ -6,8 +6,6 @@
     themes: [
       "one-dark-ui"
       "dusk-syntax"
-      # "solarized-dark-syntax"
-      # "firewatch-syntax"
     ]
   editor:
     fontSize: 15
