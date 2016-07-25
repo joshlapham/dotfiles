@@ -2,11 +2,12 @@
   core:
     disabledPackages: [
       "metrics"
-      "linter-pep8"
     ]
     themes: [
       "one-dark-ui"
-      "dusk-syntax"
+      # "dusk-syntax"
+      # "solarized-dark-syntax"
+      "firewatch-syntax"
     ]
   editor:
     fontSize: 15

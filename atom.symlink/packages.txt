@@ -1,5 +1,7 @@
 dusk-syntax@1.0.1
+firewatch-syntax@1.0.1
 linter@1.11.14
+linter-eslint@7.2.4
 linter-pep8@1.3.0
 minimap@4.24.7
 python-indent@0.4.3
