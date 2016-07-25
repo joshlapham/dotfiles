@@ -1,6 +1,6 @@
 #!/bin/python
 
-from os import path, symlink, getcwd
+from os import path, symlink
 from subprocess import check_output
 
 # Variables for `os.path`
