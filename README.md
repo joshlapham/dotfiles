@@ -6,19 +6,11 @@ https://github.com/joshlapham/dotfiles
 
 License: [Beerware](https://en.wikipedia.org/wiki/Beerware)
 
-## Installation
+## Setup
 
-Use the included bash script, which just symlinks a few .conf files and directories to your home directory.
+Run this from the command-line in your home folder:
 
-Run this command in your home folder -
-
-`git clone git://github.com/joshlapham/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && bash bootstrap.sh`
-
-## [Atom](https://atom.io)
-
-Install packages:
-
-`apm install --packages-file packages.txt`
+`git clone git://github.com/joshlapham/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && python bootstrap.py`
 
 ## Credit
 
