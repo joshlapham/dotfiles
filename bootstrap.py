@@ -67,8 +67,6 @@ def bootstrap_dotfiles(files):
 
 
 if __name__ == '__main__':
-    find_dotfiles_to_symlink(cool)
-
     try:
         path.walk(topdir, find_dotfiles_to_symlink, exten)
         bootstrap_dotfiles(DOTFILES_TO_SYMLINK)
