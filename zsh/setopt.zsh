@@ -1,3 +1,6 @@
+# Autocomplete CLI switches
+setopt completealiases
+
 # Why would you type 'cd dir' if you could just type 'dir'?
 setopt AUTO_CD
 

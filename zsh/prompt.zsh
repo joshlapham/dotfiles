@@ -1,6 +1,3 @@
-# Load prompt
-autoload -U promptinit; promptinit
-
 # Set up prompt
 #PS1="%{$fg[red]%}%m%{$reset_color%}:%{$fg[green]%}%c%{$reset_color%} %(!.#.$) "
 
