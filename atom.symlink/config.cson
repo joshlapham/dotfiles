@@ -12,6 +12,7 @@
   editor:
     fontSize: 13
     invisibles: {}
+    softWrap: true
   "exception-reporting":
     userId: "5b1bc328-e440-c930-d16b-755355472ec9"
   linter: {}

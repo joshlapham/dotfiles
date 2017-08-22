@@ -6,3 +6,7 @@ linter-pyflakes
 python-indent
 pretty-json
 minimap
+language-terraform
+linter-ui-default
+intentions
+busy-signal
