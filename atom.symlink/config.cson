@@ -1,17 +1,21 @@
 "*":
   core:
+    automaticallyUpdate: false
     disabledPackages: [
       "metrics"
     ]
+    telemetryConsent: "no"
     themes: [
       "one-dark-ui"
       "dusk-syntax"
     ]
   editor:
-    fontSize: 15
+    fontSize: 13
     invisibles: {}
   "exception-reporting":
     userId: "5b1bc328-e440-c930-d16b-755355472ec9"
+  linter: {}
+  "tree-view": {}
   welcome:
     showOnStartup: false
   whitespace: {}

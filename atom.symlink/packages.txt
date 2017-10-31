@@ -1,8 +1,8 @@
-dusk-syntax@1.0.1
-firewatch-syntax@1.0.1
-linter@1.11.14
-linter-eslint@7.2.4
-linter-pyflakes@0.3.0
-python-indent@0.4.3
-pretty-json@1.4.4
-minimap@4.24.7
+dusk-syntax
+firewatch-syntax
+linter
+linter-eslint
+linter-pyflakes
+python-indent
+pretty-json
+minimap
