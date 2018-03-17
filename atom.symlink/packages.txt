@@ -3,6 +3,7 @@ firewatch-syntax
 linter
 linter-eslint
 linter-pyflakes
+linter-terraform-syntax
 python-indent
 pretty-json
 minimap
