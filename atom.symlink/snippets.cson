@@ -34,3 +34,13 @@
       except Exception as e:
         raise Exception(e)
     """
+    
+'.source.python':
+  'Argument parser':
+    'prefix': 'argumentparser'
+    'body': """
+      parser = ArgumentParser()
+      parser.add_argument('--thing1', help='Description for this arg', required=True)
+      parser.add_argument('--thing2', help='Description for this arg', required=False)
+      args = parser.parse_args()
+    """
