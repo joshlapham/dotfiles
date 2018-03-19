@@ -9,7 +9,7 @@ set showcmd                     " display incomplete commands
 
 "" Whitespace
 "set nowrap                      " don't wrap lines
-set tabstop=4 
+set tabstop=4
 set shiftwidth=4                " a tab is four spaces
 set expandtab                   " use spaces, not tabs
 set backspace=indent,eol,start  " backspace through everything in insert mode
@@ -51,7 +51,7 @@ nnoremap <c-l> <c-w>l
 nnoremap <leader><leader> <c-^>
 
 " shortcut to NERDTree
-nnoremap <leader>n :NERDTree<cr>
+" nnoremap <leader>n :NERDTree<cr>
 
 " shortcut to Gundo
 nnoremap <c-a> :GundoToggle
@@ -67,10 +67,11 @@ au FileType py set textwidth=79 " PEP-8 Friendly
 " fancy statusline
 set statusline=%F%m%r%h%w
 set statusline+=%=
-set statusline+=TYPE:%Y\ 
-set statusline+=%{SyntasticStatuslineFlag()}\ 
-set statusline+=ASCII:\%03.3b\ 
-set statusline+=HEX:\%02.2B\ 
-set statusline+=L:%05l/%L\ 
-set statusline+=%p%%\ 
+set statusline+=TYPE:%Y\
+" Syntastic plugin
+set statusline+=%{SyntasticStatuslineFlag()}\
+set statusline+=ASCII:\%03.3b\
+set statusline+=HEX:\%02.2B\
+set statusline+=L:%05l/%L\
+set statusline+=%p%%\
 set laststatus=2
