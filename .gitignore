@@ -7,6 +7,9 @@ local
 .tmp
 .swp
 
+# Vim network history
+vim/vim.symlink/.netrwhist
+
 # Atom
 atom.symlink/.apm
 atom.symlink/.node-gyp
