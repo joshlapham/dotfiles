@@ -11,3 +11,5 @@ language-terraform
 linter-ui-default
 intentions
 busy-signal
+language-powershell
+linter-python-pep8
