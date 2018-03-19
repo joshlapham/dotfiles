@@ -75,3 +75,6 @@ set statusline+=HEX:\%02.2B\
 set statusline+=L:%05l/%L\
 set statusline+=%p%%\
 set laststatus=2
+
+" Disable network history
+let g:netrw_dirhistmax = 0
