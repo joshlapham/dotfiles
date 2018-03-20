@@ -31,4 +31,4 @@ set -g status-right '#[fg=colour233,bg=colour241,bold] %d/%m #[fg=colour233,bg=c
 # Enable scrolling
 # TODO: not working -- want to scroll back over terminal pane contents
 #set-option -g mouse on
-set -g mouse on
+#set -g mouse on
