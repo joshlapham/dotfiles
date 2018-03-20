@@ -1,13 +1,22 @@
 "*":
+  "":
+    python:
+      source:
+        editor:
+          softtabs: true
+          tabLength: 4
+        whitespace:
+          ensureSingleTrailingNewline: false
+          removeTrailingWhitespace: false
   core:
-    automaticallyUpdate: false
+    automatically_update: false
     disabledPackages: [
       "metrics"
     ]
     telemetryConsent: "no"
     themes: [
       "one-dark-ui"
-      "dusk-syntax"
+      "solarized-dark-syntax"
     ]
   editor:
     fontSize: 13
@@ -15,15 +24,7 @@
     softWrap: true
   "exception-reporting":
     userId: "5b1bc328-e440-c930-d16b-755355472ec9"
-  linter: {}
-  "tree-view": {}
+  "linter-ui-default":
+    showPanel: true
   welcome:
     showOnStartup: false
-  whitespace: {}
-".python.source":
-  editor:
-    softtabs: true
-    tabLength: 4
-  whitespace:
-    ensureSingleTrailingNewline: false
-    removeTrailingWhitespace: false
