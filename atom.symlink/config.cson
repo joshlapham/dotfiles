@@ -22,6 +22,7 @@
     fontSize: 13
     invisibles: {}
     showIndentGuide: true
+    showInvisibles: true
     showLineNumbers: true
     softWrap: true
   "exception-reporting":
