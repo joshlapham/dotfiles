@@ -13,3 +13,4 @@ intentions
 busy-signal
 language-powershell
 linter-python-pep8
+linter-jsonlint
