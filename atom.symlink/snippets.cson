@@ -43,3 +43,56 @@
       parser.add_argument('--thing2', help='Description for this arg', required=False)
       args = parser.parse_args()
     """
+
+  'sqlalchemy setup':
+    'prefix': 'sqlalchemy'
+    'body': """
+      #!/usr/bin/python
+
+      from sqlalchemy import func, Column, Integer, String, DateTime, ForeignKey
+      from sqlalchemy.ext.declarative import declarative_base
+      from sqlalchemy.orm import relationship
+
+      class DatabaseRow(object):
+          id = Column(Integer, primary_key=True)
+          date_created = Column(DateTime, default=func.current_timestamp())
+          date_modified = Column(DateTime, default=func.current_timestamp(), onupdate=func.current_timestamp())
+          title = Column(String(480))
+          url = Column(String(480))
+
+          def update(self, session):
+              session.commit()
+
+          def __init__(self, title, url):
+              self.title = title
+              self.url = url
+
+          def __repr__(self):
+              return "<DatabaseRow title={}, url={}}".format(self.title, self.url)
+
+      Base = declarative_base(cls=DatabaseRow)
+
+      class Parent(Base):
+          __tablename__ = "parent"
+
+          active = Column(Integer, default=1)
+          children = relationship('Child')
+
+          def __repr__(self):
+              return "<Parent title={}}".format(self.title)
+
+      class Child(Base):
+          __tablename__ = "child"
+
+          text = Column(String(360))
+
+          parent_id = Column(Integer, ForeignKey('parent.id'))
+
+          def __init__(self, title, url, text):
+              self.title = title
+              self.url = url
+              self.text = text
+
+          def __repr__(self):
+              return "<Child title={}".format(self.title)
+    """
