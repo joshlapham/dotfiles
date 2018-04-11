@@ -12,6 +12,7 @@
     automatically_update: false
     disabledPackages: [
       "metrics"
+      "atom-typescript"
     ]
     telemetryConsent: "no"
     themes: [
