@@ -44,6 +44,22 @@
       args = parser.parse_args()
     """
 
+  'Logging':
+    'prefix': 'logging'
+    'body': """
+      logger = logging.getLogger('apply-cost-tags')
+      logger.setLevel(logging.DEBUG)
+      # fh = logging.FileHandler('output.log')
+      # fh.setLevel(logging.DEBUG)
+      formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+      # fh.setFormatter(formatter)
+      # logger.addHandler(fh)
+      ch = logging.StreamHandler()
+      ch.setLevel(logging.DEBUG)
+      ch.setFormatter(formatter)
+      logger.addHandler(ch)
+    """
+
   'sqlalchemy setup':
     'prefix': 'sqlalchemy'
     'body': """
