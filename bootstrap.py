@@ -1,5 +1,3 @@
-#!/bin/python
-
 from os import path, symlink, getcwd
 from subprocess import check_output
 
@@ -60,7 +58,7 @@ def bootstrap_dotfiles(files):
 
             if (path.isfile(home_dir_path) or path.isdir(home_dir_path) or path.islink(home_dir_path)) is False:
                 symlink(path.abspath(file), home_dir_path)
-                print "Created symlink for config file: %s" % home_dir_filename
+                print("Created symlink for config file: {}".format(home_dir_filename))
 
     else:
         raise BootstrapDotfilesException("No config files found.")
@@ -75,7 +73,7 @@ if __name__ == '__main__':
         # TODO: install vim packages
 
     except BootstrapDotfilesException as e:
-        print e
+        print(e)
 
     except Exception as e:
-        print e
+        print(e)
