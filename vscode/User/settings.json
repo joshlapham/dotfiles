@@ -1,0 +1,23 @@
+{
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "editor.fontSize": 18,
+    "editor.fontFamily": "Menlo",
+    "editor.wordWrap": "on",
+    "terminal.integrated.rendererType": "dom",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/.zip": true,
+        "**/env": true,
+        "**/__pycache__": true
+    },
+    "update.enableWindowsBackgroundUpdates": false,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintPath": "/home/jl/.local/bin/pylint",
+    "python.pythonPath": "/home/linuxbrew/.linuxbrew/bin/python3"
+}
