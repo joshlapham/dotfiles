@@ -71,6 +71,7 @@ if __name__ == '__main__':
 
         # TODO: install Atom packages
         # TODO: install vim packages
+	# TODO: install VS Code settings
 
     except BootstrapDotfilesException as e:
         print(e)
