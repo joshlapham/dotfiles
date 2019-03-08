@@ -1,0 +1,32 @@
+{
+	"Script Parameters": {
+		"prefix": "params",
+		"body": [
+			"[CmdletBinding()]",
+			"Param (",
+			"\t[Parameter(Mandatory=\\$True)]",
+			"\t[string]\\$Path",
+			")"
+		]
+	},
+	"Main Function": {
+		"prefix": "main",
+		"body": [
+			"function Main() {",
+			"\t# TODO: Implement",
+			"}\n",
+			"Main"
+		]
+	},
+	"Function": {
+		"prefix": "func",
+		"body": [
+			"function Do-Something() {",
+			"\tParam (",
+			"\t\t[Parameter(Mandatory=\\$True)]",
+			"\t\t[string]\\$Path",
+			"\t)",
+			"}"
+		]
+	}
+}
