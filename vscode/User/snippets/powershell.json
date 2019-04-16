@@ -1,32 +1,48 @@
 {
-	"Script Parameters": {
-		"prefix": "params",
-		"body": [
-			"[CmdletBinding()]",
-			"Param (",
-			"\t[Parameter(Mandatory=\\$True)]",
-			"\t[string]\\$Path",
-			")"
-		]
-	},
-	"Main Function": {
-		"prefix": "main",
-		"body": [
-			"function Main() {",
-			"\t# TODO: Implement",
-			"}\n",
-			"Main"
-		]
-	},
-	"Function": {
-		"prefix": "func",
-		"body": [
-			"function Do-Something() {",
-			"\tParam (",
-			"\t\t[Parameter(Mandatory=\\$True)]",
-			"\t\t[string]\\$Path",
-			"\t)",
-			"}"
-		]
-	}
+  "Script Parameters": {
+    "prefix": "params",
+    "body": [
+      "[CmdletBinding()]",
+      "Param (",
+      "\t[Parameter(Mandatory=\\$True)]",
+      "\t[string]\\$Path",
+      ")"
+    ]
+  },
+  "Main Function": {
+    "prefix": "main",
+    "body": [
+      "function Main() {",
+      "\t# TODO: Implement",
+      "}\n",
+      "Main"
+    ]
+  },
+  "Function": {
+    "prefix": "func",
+    "body": [
+      "function Do-Something() {",
+      "\tParam (",
+      "\t\t[Parameter(Mandatory=\\$True)]",
+      "\t\t[string]\\$Path",
+      "\t)",
+      "}"
+    ]
+  },
+  "POST request": {
+    "prefix": "postrequest",
+    "description": "Make a POST request to a URL",
+    "body": [
+      "$url = $1\n",
+      "$body = @{",
+      "\t'Name' = $2",
+      "}\n",
+      "$headers = @{",
+      "\t'Content-Type' = 'application/json'",
+      "\t'X-Api-Key' = $3",
+      "}\n",
+      "$Response = Invoke-RestMethod $url -Body ($body|ConvertTo-Json) -Method POST -Headers $headers\n",
+      "Write-Host $Response"
+    ]
+  }
 }

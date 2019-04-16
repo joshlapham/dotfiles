@@ -1,15 +1,99 @@
 {
+  "Get AWS account ID": {
+    "description": "Get AWS account ID, via STS",
+    "prefix": "boto-get-aws-account-id",
+    "body": [
+      "def account_id(session):",
+      "\t\"\"\" Parse AWS account ID from a given `Session` class object instance, and return the result. \"\"\"\n",
+      "\tclient = session.client('sts')",
+      "\taccount_id = client.get_caller_identity()['Account']\n",
+      "\treturn account_id"
+    ]
+  },
+
+  "Check CLI Output": {
+    "description": "Run a command/process with supressed output",
+    "prefix": "checkoutput",
+    "body": [
+      "import os",
+      "import subprocess\n",
+      "cli_commands = ['whoami']\n",
+      "try:",
+      "\tFNULL = open(os.devnull, 'w')",
+      "\tsubprocess.call(cli_commands, stdout=FNULL, stderr=subprocess.STDOUT)\n",
+      "except Exception as e:",
+      "\tprint(e)"
+    ]
+  },
+
+  "Datetime": {
+    "prefix": "datetimehelpers",
+    "description": "Methods for dealing with timestamps and datetime objects",
+    "body": [
+    "def current_timestamp():",
+    "\tnow = datetime.datetime.now()\n",
+    "\treturn str(now)",
+    "def timestamp_to_datetime(timestamp):",
+    "\treturn datetime.datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S.%f')"
+    ]
+  },
+
+  "Make POST request with JSON data payload": {
+    "prefix": "requestpostjsondata",
+    "description": "Make POST request with JSON data payload",
+    "body": [
+      "def make_post_request(url, payload):",
+      "\tdata = payload.encode('utf-8')",
+      "\theaders={'Content-Type': 'application/json'}",
+      "\theaders['User-Agent'] = 'ScriptName-Python-urllib/3.6'",
+      "\trequest = urllib.request.Request(url, data, headers)\n",
+      "\twith urllib.request.urlopen(request) as response:",
+      "\t\treturn response.read()\n",
+      "\treturn None"
+    ]
+  },
+
+  "Make POST request with login credentials": {
+    "prefix": "requestpostlogin",
+    "description": "Make POST request with login credentials",
+    "body": [
+      "import base64",
+      "import urllib.parse",
+      "import urllib.request\n",
+      "def make_post_request_with_credentials(url, payload, user, token):",
+      "\t# Handle credentials",
+      "\tcreds_str = '{}:{}'.format(user, token)",
+      "\tcreds_bytes = bytes(creds_str, 'utf-8')",
+      "\tencoded = base64.b64encode(creds_bytes)\n",
+      "\theaders = {",
+      "\t\t'Authorization': 'Basic {}'.format(encoded.decode('ascii')),",
+      "\t\t'Content-Type': 'application/json'",
+      "\t}\n",
+      "\tdata = payload.encode('utf-8')\n",
+      "\t# Update base API URL",
+      "\tjoined_url_parts = os.path.join('rest', 'api', 'whatever', 'lol')",
+      "\tupdated_api_url = urllib.parse.urljoin(url, joined_url_parts)\n",
+      "\trequest = urllib.request.Request(updated_api_url, data, headers)\n",
+      "\twith urllib.request.urlopen(request) as response:",
+      "\t\treturn response.read()\n",
+      "\treturn None"
+    ]
+  },
+
 	"Load environment variables": {
-		"prefix": "loadenvvariables",
+    "prefix": "loadenvvariables",
+    "description": "Load environment variables",
 		"body": [
 			"try:",
 			"\taws_profile = os.environ['AWS_PROFILE']\n\t",
 			"except KeyError as e:",
-			"\tprint('Environment variable not loaded: {}'.format(e))"
+			"\tsys.exit('Environment variable not loaded: {}'.format(e))"
 		]
-	},
+  },
+  
 	"Arguments": {
-		"prefix": "argparse",
+    "prefix": "argparse",
+    "description": "Parse script arguments",
 		"body": [
 			"parser = argparse.ArgumentParser()",
 			"parser.add_argument('--thing', help='Help text', type=str, required=True)",
@@ -17,7 +101,18 @@
 			"parser.add_argument('--environment', help='Help text', type=str, default=None, required=True, choices=['uat', 'UAT', 'prod', 'Prod', 'production', 'Production'])",
 			"args = parser.parse_args()"
 		]
-	},
+  },
+  
+	"json-load-file": {
+    "prefix": "jsonloadfile",
+    "description": "Load contents of a JSON file",
+		"body": [
+			"with open($1, 'r') as open_file:",
+			"\tcontents = json.load(open_file)",
+			"\tprint(contents)"
+		]
+  },
+  
 	"boto-S3-PUT-object": {
 		"prefix": "botos3put",
 		"body": [
@@ -30,7 +125,8 @@
 			")\n",
 			"response_status_code = response['ResponseMetadata']['HTTPStatusCode']"
 		]
-	},
+  },
+  
 	"boto-s3-GET-object": {
 		"prefix": "botos3get",
 		"body": [
@@ -42,7 +138,8 @@
 			"body_decoded = response['Body'].read().decode('utf-8')",
 			"body_decoded_json = json.loads(body_decoded)"
 		]
-	},
+  },
+  
 	"boto-s3-list-objects": {
 		"prefix": "botos3list",
 		"body": [
@@ -52,7 +149,8 @@
 			"for item in response['Contents']:",
 			"\tkey = item['Key']"
 		]
-	},
+  },
+  
 	"boto-s3-delete-objects": {
 		"prefix": "botos3delete",
 		"body": [
@@ -67,14 +165,27 @@
 			"\t}",
 			")"
 		]
-	},
+  },
+  
+	"boto-response-code-check": {
+		"prefix": "botoresponse",
+		"body": [
+			"response_status_code = response['ResponseMetadata']['HTTPStatusCode']\n",
+			"if response_status_code == 200:",
+			"\tprint('Successful')",
+			"else:",
+			"\tprint('Error - response status code was {}'.format(response_status_code))"
+		]
+  },
+  
 	"generate-random-uuid": {
 		"prefix": "uuid",
 		"body": [
 			"uuid_str = uuid.uuid4()",
 			"print(str(uuid_str))"
 		]
-	},
+  },
+  
 	"Check CLI output": {
 		"prefix": "checkoutput",
 		"body": [
@@ -87,5 +198,58 @@
 				"\traise Exception(e)"
 		],
 		"description": "Check output of a CLI command"
-	}
+	},
+
+	"AWS Lambda Function": {
+		"prefix": "lambda-func",
+		"body": [
+			"import boto3",
+			"import botocore\n",
+			"def lambda_handler(event, context):",
+			"\tpass\n",
+			"if __name__ == \"__main__\":",
+			"\tpass"
+		]
+	},
+
+	"AWS SSM Command": {
+		"prefix": "ssm-command",
+		"description": "Send AWS SSM command",
+		"body": [
+			"client = boto3.client('ssm')\n",
+			"response = client.send_command(",
+			"\tDocumentName='AWS-RunPowerShellScript',",
+			"\tInstanceIds=[",
+			"\t\targs.instance_id",
+			"\t],",
+			"\tParameters={",
+			"\t\t'commands': [",
+			"\t\t\t'net user {} \"{}\"'.format(args.user, args.password)",
+			"\t\t]",
+			"\t}",
+			")\n",
+			"response_status_code = response['ResponseMetadata']['HTTPStatusCode']",
+			"response_command_status = response['Command']['Status']",
+			"response_command_id = response['Command']['CommandId']\n",
+			"if response_status_code == 200:",
+			"\tprint('Command executed successfully; command status is {}'.format(response_command_status))\n",
+			"response = client.get_command_invocation(",
+			"\tCommandId=response_command_id,",
+			"\tInstanceId=args.instance_id",
+			")\n",
+			"print(response['Status'])"
+		]
+  },
+  
+  "botocore-client-exception": {
+    "prefix": "botocoreclientexception",
+    "description": "Handle Boto client exceptions",
+    "body": [
+      "try:",
+      "\tpass",
+      "except botocore.exceptions.ClientError as e:",
+      "\tif e.response['Error']['Code'] == 'NoSuchKey':",
+      "\t\tprint('Failed to find key in S3 bucket')"
+    ]
+  }
 }

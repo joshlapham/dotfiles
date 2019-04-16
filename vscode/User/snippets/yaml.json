@@ -1,0 +1,194 @@
+{
+	"cloudformation-skeleton": {
+		"prefix": "cf-skeleton",
+		"body": [
+			"---",
+			"AWSTemplateFormatVersion: \"2010-09-09\"",
+			"Description: $1",
+			"Parameters:",
+			"\tParameterName:",
+			"\t\tDescription: Description goes here",
+			"\t\tType: String\n",
+			"Resources:\n",
+			"Outputs:",
+			"..."
+		],
+		"description": "CloudFormation skeleton template"
+	},
+
+	"cloudformation-iam-role": {
+		"prefix": "cf-iam-role",
+		"body": [
+			"IAMRoleResource:",
+			"\tType: AWS::IAM::Role",
+			"\tProperties:",
+			"\t\tRoleName: $1",
+			"\t\tAssumeRolePolicyDocument:",
+			"\t\t\tVersion: 2012-10-17",
+			"\t\t\tStatement:",
+			"\t\t\t\t- Effect: Allow",
+			"\t\t\t\t\tPrincipal:",
+			"\t\t\t\t\t\tService:",
+			"\t\t\t\t\t\t\t- lambda.amazonaws.com",
+			"\t\t\t\t\t\tAWS:",
+			"\t\t\t\t\t\t\t- $2",
+			"\t\t\t\t\t\tAction:",
+			"\t\t\t\t\t\t\t- sts:AssumeRole"
+		]
+	},
+
+	"cloudformation-dynamodb": {
+		"prefix": "cf-dynamodb",
+		"body": [
+			"DynamoDbResource:",
+			"\tType: AWS::DynamoDB::Table",
+			"\tProperties:",
+			"\t\tTableName: $1",
+			"\t\tAttributeDefinitions:",
+			"\t\t\t- AttributeName: \"Album\"",
+			"\t\t\t\tAttributeType: \"S\"",
+			"\t\t\t- AttributeName: \"Artist\"",
+			"\t\t\t\tAttributeType: \"S\"",
+			"\t\t\t- AttributeName: \"Sales\"",
+			"\t\t\t\tAttributeType: \"N\""
+		]
+	},
+
+	"cloudformation-cloudwatch-event": {
+		"prefix": "cf-cw-event",
+		"body": [
+			"CloudWatchEventRule:",
+			"\tType: AWS::Events::Rule",
+			"\tProperties:",
+			"\t\tDescription: $1",
+			"\t\tEventPattern: $2",
+			"\t\tName: $3",
+			"\t\tScheduleExpression: $4",
+			"\t\tState: $5",
+			"\t\tTargets:",
+			"\t\t\t- $6"
+		]
+	},
+
+	"cloudformation-cloudwatch-event-lambda-permission": {
+		"prefix": "cf-cw-event-lambda-permission",
+		"body": [
+			"PermissionForEventsToInvokeLambda:",
+			"\tType: AWS::Lambda::Permission",
+			"\tProperties:",
+			"\t\tFunctionName:",
+			"\t\t\tRef: \"LambdaFunction\"",
+			"\t\tAction: \"lambda:InvokeFunction\"",
+			"\t\tPrincipal: \"events.amazonaws.com\"",
+			"\t\tSourceArn:",
+			"\t\t\tFn::GetAtt:",
+			"\t\t\t\t- \"ScheduledRule\"",
+			"\t\t\t\t- \"Arn\""
+		]
+	},
+
+	"cloudformation-api-gateway": {
+		"prefix": "cf-apigateway",
+		"body": [
+			"ApiGatewayResource:",
+			"\tType: AWS::ApiGateway::RestApi",
+			"\tProperties:",
+			"\t\tName: $1",
+			"\t\tDescription: $2\n",
+			"ApiGatewayRootPathResource:",
+			"\tType: AWS::ApiGateway::Resource",
+			"\tProperties:",
+			"\t\tRestApiId: !Ref ApiGatewayResource",
+			"\t\tParentId: !GetAtt ApiGatewayResource.RootResourceId",
+			"\t\tPathPart: $3\n",
+			"ApiGatewayPathResource:",
+			"\tType: AWS::ApiGateway::Resource",
+			"\tProperties:",
+			"\t\tRestApiId: !Ref ApiGatewayResource",
+			"\t\tParentId: !Ref ApiGatewayRootPathResource",
+			"\t\tPathPart: $4\n",
+			"ApiGatewayGetMethod:",
+			"\tType: AWS::ApiGateway::Method",
+			"\tProperties:",
+			"\t\tAuthorizationType: NONE",
+			"\t\tApiKeyRequired: true",
+			"\t\tHttpMethod: GET",
+			"\t\tIntegration:",
+			"\t\t\tIntegrationHttpMethod: GET",
+			"\t\t\tType: AWS_PROXY",
+			"\t\t\tUri: !Sub",
+			"\t\t\t\t- \"arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaArn}/invocations\"",
+			"\t\t\t\t- LambdaArn: !Ref LambdaFunctionPromoteToProdFilesArn",
+			"\t\tResourceId: !Ref ApiGatewayPromoteToProdFilesResource",
+			"\t\tRestApiId: !Ref ApiGateway"
+		]
+	},
+
+	"cloudformation-lambda": {
+		"prefix": "cf-lambda",
+		"body": [
+			"LambdaFunctionResource:",
+			"\tType: AWS::Lambda::Function",
+			"\tProperties:",
+			"\t\tFunctionName: $1",
+			"\t\tDescription: $2",
+			"\t\tRuntime: $3",
+			"\t\tTimeout: $4",
+			"\t\tMemorySize: $5",
+			"\t\tHandler: $6",
+			"\t\tRole: $7"
+		]
+	},
+
+	"cloudformation-sns-topic": {
+		"prefix": "cf-sns",
+		"body": [
+			"SnsTopicResource:",
+			"\tType: AWS::SNS::Topic",
+			"\tProperties:",
+			"\t\tDisplayName: $1"
+		]
+	},
+
+	"cloudformation-cloudwatch-alarm": {
+		"prefix": "cf-cwalarm",
+		"body": [
+			"CloudWatchAlarmResource:",
+			"\tType: AWS::CloudWatch::Alarm",
+			"\tProperties:",
+			"\t\tAlarmDescription: $1",
+			"\t\tMetricName: $2",
+			"\t\tNamespace: $3",
+			"\t\tStatistic: $4",
+			"\t\tPeriod: $5",
+			"\t\tEvaluationPeriods: 1",
+			"\t\tThreshold: $6",
+			"\t\tUnit: $7",
+			"\t\tAlarmActions: [$8]",
+			"\t\tDimensions: [$9]",
+			"\t\tComparisonOperator: GreaterThanOrEqualToThreshold"
+		]
+	},
+
+	"cloudformation-iam-role-api-gateway": {
+		"prefix": "cf-iam-api-gateway",
+		"description": "IAM role for API Gateway",
+		"body": [
+			"IAMRoleApiGateway:",
+			"\tType: AWS::IAM::Role",
+			"\tProperties:",
+			"\t\tRoleName: $1",
+			"\t\tAssumeRolePolicyDocument:",
+			"\t\t\tVersion: 2012-10-17",
+			"\t\t\tStatement:",
+			"\t\t\t\t- Effect: Allow",
+			"\t\t\t\t\tPrincipal:",
+			"\t\t\t\t\t\tService:",
+			"\t\t\t\t\t\t\t- apigateway.amazonaws.com",
+			"\t\t\t\t\tAction:",
+			"\t\t\t\t\t\t- sts:AssumeRole",
+			"\t\tManagedPolicyArns:",
+			"\t\t\t- \"arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs\""
+		]
+	}
+}
