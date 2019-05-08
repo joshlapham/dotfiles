@@ -1,4 +1,4 @@
-# Path to your dotfiles
+# Path to dotfiles
 ZSH=$HOME/.dotfiles
 
 # Source every .zsh file
