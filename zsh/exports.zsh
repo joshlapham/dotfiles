@@ -8,18 +8,6 @@ export KEYTIMEOUT=1
 # TODO: move this to somewhere specific to `rvm`
 export PATH="$PATH:$HOME/.rvm/bin"
 
-### History
-
-# Location of history file
-# NOTE - happens in `history.zsh`
-#HISTFILE=$HOME/.zsh_history
-
-# Size of history file
-#HISTSIZE=50000
-
-# How much history to save
-#SAVEHIST=50000
-
 ### Colours
 
 # Set up colours

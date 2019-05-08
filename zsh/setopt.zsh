@@ -21,31 +21,6 @@ setopt vi
 # Disable any defaults set by zsh
 unsetopt global_rcs
 
-### History
-# NOTE - set in `history.zsh` file
-# History commands are appended to history file
-#setopt APPEND_HISTORY
-
-# Show possible matches if completion can't decide
-#setopt auto_list
-
-# Puts more info in history file
-# setopt EXTENDED_HISTORY
-
-# Sequential duplicate commands only listed once in history
-# setopt HIST_IGNORE_DUPS
-
-# Do completion on <value> in foo=<value>
-# setopt magic_equal_subst
-
-# Save history on all shells
-# setopt SHARE_HISTORY
-
-# setopt HIST_VERIFY
-# setopt INC_APPEND_HISTORY
-# setopt HIST_EXPIRE_DUPS_FIRST
-# setopt HIST_IGNORE_SPACE
-
 ### Directories
 # pushd options
 setopt PUSHD_MINUS
