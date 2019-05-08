@@ -5,18 +5,20 @@ export EDITOR="vim"
 export KEYTIMEOUT=1
 
 # Add RVM to PATH for scripting
+# TODO: move this to somewhere specific to `rvm`
 export PATH="$PATH:$HOME/.rvm/bin"
 
 ### History
 
 # Location of history file
-HISTFILE=$HOME/.zsh_history
+# NOTE - happens in `history.zsh`
+#HISTFILE=$HOME/.zsh_history
 
 # Size of history file
-HISTSIZE=50000
+#HISTSIZE=50000
 
 # How much history to save
-SAVEHIST=50000
+#SAVEHIST=50000
 
 ### Colours
 
