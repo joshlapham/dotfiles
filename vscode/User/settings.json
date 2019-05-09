@@ -1,6 +1,7 @@
 {
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
+    "workbench.colorTheme": "Solarized Dark",
     "editor.fontSize": 18,
     "editor.fontFamily": "Menlo",
     "editor.wordWrap": "on",
@@ -19,5 +20,33 @@
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.linting.pylintPath": "/home/jl/.local/bin/pylint",
-    "python.pythonPath": "/home/linuxbrew/.linuxbrew/bin/python3"
+    "python.pythonPath": "/home/linuxbrew/.linuxbrew/bin/python3",
+    "window.zoomLevel": -2,
+    "editor.renderWhitespace": "all",
+    "[python]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": false,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[typescript]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 2
+    },
+    "[html]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[powershell]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[json]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    }
 }
