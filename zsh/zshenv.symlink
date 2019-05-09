@@ -1,0 +1,2 @@
+# Fix history autocompletion
+DEBIAN_PREVENT_KEYBOARD_CHANGES=yes
