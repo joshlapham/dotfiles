@@ -251,5 +251,37 @@
       "\tif e.response['Error']['Code'] == 'NoSuchKey':",
       "\t\tprint('Failed to find key in S3 bucket')"
     ]
+  },
+
+  "write-to-temp-file": {
+    "prefix": "writetempfile",
+    "description": "Write to a file in a `tmp` directory",
+    "body": [
+      "def write_contents_to_temp_file(file_contents):",
+      "\tuuid_str = uuid.uuid4()",
+      "\tfilename = '{}-contents.txt'.format(uuid_str)\n",
+      "\tif os.path.isdir('tmp') is False:",
+      "\t\tos.mkdir('tmp')\n",
+      "\tfilepath = os.path.join('tmp', filename)\n",
+      "\twith open(filepath, 'w') as output_file:",
+      "\t\toutput_file.write(file_contents)\n",
+      "\treturn filepath"
+    ]
+  },
+
+  "logger": {
+    "prefix": "logger",
+    "description": "Init a Logger object",
+    "body": [
+      "def Logger():",
+      "\tlogger = logging.getLogger(__name__)",
+      "\tlogger.setLevel(logging.DEBUG)",
+      "\tch = logging.StreamHandler()",
+      "\tch.setLevel(logging.DEBUG)",
+      "\tformatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')",
+      "\tch.setFormatter(formatter)",
+      "\tlogger.addHandler(ch)\n",
+      "\treturn logger"
+    ]
   }
 }
