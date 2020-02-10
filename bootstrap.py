@@ -1,5 +1,9 @@
-from os import path, symlink, getcwd
-from subprocess import check_output
+#!/bin/python2
+
+import os
+import subprocess
+# from os import path, symlink, getcwd
+# from subprocess import check_output
 
 # Variables for `os.path`
 topdir = '.'
@@ -21,7 +25,7 @@ def find_dotfiles_to_symlink(ext, dirname, names):
 
     for name in names:
         if name.lower().endswith(ext):
-            dotfile = path.join(dirname, name)
+            dotfile = os.path.join(dirname, name)
 
             # TODO: don't use a global variable for this
             DOTFILES_TO_SYMLINK.append(dotfile)
@@ -39,7 +43,7 @@ def install_atom_packages():
     ]
 
     try:
-        check_output(cli)
+        subprocess.check_output(cli)
 
     except Exception as e:
         raise BootstrapDotfilesException("Failed to install Atom packages.")
@@ -52,12 +56,12 @@ def bootstrap_dotfiles(files):
     if files is not None:
         for file in files:
             # NOTE - `file_extension` not used right now.
-            filename, file_extension = path.splitext(file)
-            home_dir_filename = ".%s" % path.basename(filename)
-            home_dir_path = path.expanduser("~/%s" % home_dir_filename)
+            filename, file_extension = os.path.splitext(file)
+            home_dir_filename = ".%s" % os.path.basename(filename)
+            home_dir_path = os.path.expanduser("~/%s" % home_dir_filename)
 
-            if (path.isfile(home_dir_path) or path.isdir(home_dir_path) or path.islink(home_dir_path)) is False:
-                symlink(path.abspath(file), home_dir_path)
+            if (os.path.isfile(home_dir_path) or os.path.isdir(home_dir_path) or os.path.islink(home_dir_path)) is False:
+                os.symlink(os.path.abspath(file), home_dir_path)
                 print("Created symlink for config file: {}".format(home_dir_filename))
 
     else:
@@ -66,7 +70,7 @@ def bootstrap_dotfiles(files):
 
 if __name__ == '__main__':
     try:
-        path.walk(topdir, find_dotfiles_to_symlink, exten)
+        os.path.walk(topdir, find_dotfiles_to_symlink, exten)
         bootstrap_dotfiles(DOTFILES_TO_SYMLINK)
 
         # TODO: install Atom packages
